@@ -28,10 +28,14 @@ Not forks required; adjacent references:
 
 Gap vs those: Raycast-like overlay + diff + action palette.
 
+## Spec
+
+Full product / engineering cahier des charges: **[SPEC.md](./SPEC.md)** (vision, competitive notes with sources, UX, architecture, MVP, acceptance, open questions).
+
 ## Author / house
 
 JB already ships other Omarchy plugins (Mac Pro 2013, dsmn-adapted).
 
 ## Scope lock
 
-Do not invent features beyond this brief until JB expands it.
+Do not invent features beyond this brief until JB expands it. Prefer SPEC.md over ad-hoc additions.

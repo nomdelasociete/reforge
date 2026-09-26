@@ -21,17 +21,26 @@ Other actions: re-transform, copy, handoff to the Omarchy default agent, cancel.
 
 Omarchy on Hyprland (Wayland).
 
+## Spec
+
+Full product / engineering cahier des charges (FR lead, sourced competitive research, UX, architecture, MVP vs later, acceptance criteria, open questions for JB):
+
+→ **[SPEC.md](./SPEC.md)**
+
+Locked product framing: [CONTEXT.md](./CONTEXT.md).
+
 ## Related prior art
 
 Inspiration / adjacent tools (not required forks):
 
 - [jankeesvw/omarchy-text-transform](https://github.com/jankeesvw/omarchy-text-transform)
 - [ahasdemir/hypr-ai-grammar](https://github.com/ahasdemir/hypr-ai-grammar)
+- Raycast [AI Commands](https://manual.raycast.com/ai/ai-commands) / Quick Fix
+- Tinycast Quick Actions ([docs](https://raw.githubusercontent.com/abue-ammar/tinycast/main/docs/features/quick-actions.md); [PR #314](https://github.com/abue-ammar/tinycast/pull/314) diff UI — closed)
+- [jankeesvw/omarchy-meeting-recorder](https://github.com/jankeesvw/omarchy-meeting-recorder) (Omarchy UX / bar-widget language)
 
-Gap this targets: a Raycast-like overlay with diff preview and an action palette.
+Gap this targets: a Raycast-like overlay with diff preview and an action palette, on Omarchy’s default agent.
 
 ## Status
 
-Scaffold / product brief. Implementation TBD.
-
-See [CONTEXT.md](./CONTEXT.md) for the locked product framing.
+Scaffold / product brief. Implementation TBD after SPEC sign-off.
