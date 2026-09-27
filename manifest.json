@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "nomdelasociete.recast",
+  "name": "[RE]Cast",
+  "version": "0.1.0",
+  "author": "Nom de la Société",
+  "license": "MIT",
+  "description": "Record a selection, transform it with any prompt, cast it back with a diff overlay.",
+  "kinds": ["overlay"],
+  "keepLoaded": true,
+  "entryPoints": {
+    "overlay": "Overlay.qml"
+  }
+}
