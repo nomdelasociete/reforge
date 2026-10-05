@@ -60,8 +60,8 @@ Item {
   property var presets: []
   property var filtered: []
 
-  readonly property string pluginId: (manifest && manifest.id) || "nomdelasociete.recast"
-  readonly property string binPath: root.fileUrl(Qt.resolvedUrl("bin/recast"))
+  readonly property string pluginId: (manifest && manifest.id) || "nomdelasociete.reforge"
+  readonly property string binPath: root.fileUrl(Qt.resolvedUrl("bin/reforge"))
 
   property color background: Color.menu.background
   property color foreground: Color.menu.text
@@ -638,7 +638,7 @@ Item {
     parts.push(key)
     var chord = parts.join(" + ")
     if (chord === "SUPER + SHIFT + R") {
-      root.notice = "Super+Shift+R opens [RE]Cast"
+      root.notice = "Super+Shift+R opens [RE]Forge"
       return ""
     }
     return chord
@@ -949,7 +949,7 @@ Item {
     visible: root.opened
     anchors { top: true; bottom: true; left: true; right: true }
     color: "transparent"
-    WlrLayershell.namespace: "nomdelasociete-recast"
+    WlrLayershell.namespace: "nomdelasociete-reforge"
     WlrLayershell.layer: WlrLayer.Overlay
     WlrLayershell.keyboardFocus: WlrKeyboardFocus.Exclusive
     exclusionMode: ExclusionMode.Ignore
@@ -1138,7 +1138,7 @@ Item {
             Text {
               width: parent.width
               textFormat: Text.PlainText
-              text: "[RE]Cast  ·  " + root.headerTitle()
+              text: "[RE]Forge  ·  " + root.headerTitle()
                 + (root.status === "running" || root.status === "ready" || root.editing ? (root.presetName ? "  ·  " + root.presetName : "") : "")
                 + (root.agentLabel && root.status !== "idle" ? "  ·  " + root.agentLabel : "")
                 + (root.focusSection === "presets" && root.filterText ? "  ·  " + root.filterText : "")

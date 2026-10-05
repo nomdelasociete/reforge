@@ -1,4 +1,4 @@
-Portions of bin/recast adapt the tools-off agent runner and the Wayland
+Portions of bin/reforge adapt the tools-off agent runner and the Wayland
 selection grab/put sequence from:
 
   omarchy-text-transform

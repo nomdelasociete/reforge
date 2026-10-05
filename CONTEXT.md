@@ -1,11 +1,11 @@
-# [RE]Cast — context
+# [RE]Forge — context
 
 ## Brand
 
-**[RE]Cast**
+**[RE]Forge**
 
 - **RE** = record (capture the selection)
-- **Cast** = cast the transformed text back
+- **Forge** = reshape the selection and put the new form back
 
 ## Product
 

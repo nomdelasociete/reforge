@@ -1,4 +1,4 @@
-# [RE]Cast — agent rules
+# [RE]Forge — agent rules
 
 These override improvisation. Break one and the change is not done.
 
@@ -38,4 +38,4 @@ Finished work is a commit on the branch. Do not leave a completed change as untr
 
 Push to `origin` when the user asked for the work to be on the remote.
 
-Do not rewrite `~/.config`, restart the shell, or seed `~/.local/state/recast` as a drive-by. If a check needs that, restore it before you stop, and say what you touched.
+Do not rewrite `~/.config`, restart the shell, or seed `~/.local/state/reforge` as a drive-by. If a check needs that, restore it before you stop, and say what you touched.

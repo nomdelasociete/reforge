@@ -1,4 +1,4 @@
-# [RE]Cast — Cahier des charges produit / engineering
+# [RE]Forge — Cahier des charges produit / engineering
 
 > **Statut :** brief verrouillé (JB) + recherche concurrentielle — *pas encore d’implémentation*.  
 > **Repo :** https://github.com/nomdelasociete/recast  
@@ -9,7 +9,7 @@
 
 ## 1. Vision
 
-**[RE]Cast** est un plugin Omarchy (Hyprland / Wayland) qui :
+**[RE]Forge** est un plugin Omarchy (Hyprland / Wayland) qui :
 
 1. **RE**cord — capture la sélection (ou le clipboard en fallback) dans n’importe quelle app.
 2. **Cast** — envoie le texte à un prompt (libre ou preset nommé), affiche le résultat dans un **overlay** devant l’utilisateur avec **diff word-level**, puis **cast** le texte transformé (remplacer / coller / copier / handoff agent).
@@ -66,9 +66,9 @@ Explicitement **hors scope** tant que JB n’élargit pas le brief :
 
 **Built-ins utiles comme catalogue d’exemples de presets :** Improve Writing, Fix Spelling and Grammar, Explain in Simple Terms, Change Tone (Professional / Friendly), Find Bugs, Summarize Webpage, Ask About Webpage.
 
-**À emporter pour [RE]Cast :**
+**À emporter pour [RE]Forge :**
 
-| Raycast | [RE]Cast |
+| Raycast | [RE]Forge |
 |---------|----------|
 | AI Commands = prompts nommés | Presets = prompts nommés |
 | Quick Fix = hotkey → replace direct | MVP : hotkey → **toujours** overlay+diff (pas de silent replace) |
@@ -106,7 +106,7 @@ Explicitement **hors scope** tant que JB n’élargit pas le brief :
 
 **À emporter :**
 
-- Diff word-level + toggle texte brut = cœur de l’overlay [RE]Cast.
+- Diff word-level + toggle texte brut = cœur de l’overlay [RE]Forge.
 - « One run at a time », sélection capturée *avant* de cacher le launcher/overlay.
 - Custom action = name + prompt (+ glyph) — même modèle de données que nos presets.
 - Sur Wayland : pas d’AX macOS → s’appuyer sur clipboard / primary selection + `wtype` / Ctrl+C–Ctrl+V (cf. plugins Omarchy existants) ; marquer les détails API **à vérifier**.
@@ -152,7 +152,7 @@ Explicitement **hors scope** tant que JB n’élargit pas le brief :
 | **CLI pour bindings** | `start` / `pause` / `stop` / `compact` / `watch` (NDJSON) → le widget et Hyprland parlent la même surface |
 | **Manifest bar-widget** | `jankeesvw.meeting-recorder`, `defaultSection: "right"`, entry `Widget.qml` |
 
-**Leçon pour [RE]Cast :** même sobriété visuelle (tokens `Color`/`Style`), feedback d’état pendant le run agent (bar ou overlay), surface CLI/`omarchy-shell` pour les keybindings, agent default tools-off.
+**Leçon pour [RE]Forge :** même sobriété visuelle (tokens `Color`/`Style`), feedback d’état pendant le run agent (bar ou overlay), surface CLI/`omarchy-shell` pour les keybindings, agent default tools-off.
 
 ### 3.5 Prior art Omarchy text — réutiliser vs gap
 
@@ -167,7 +167,7 @@ Explicitement **hors scope** tant que JB n’élargit pas le brief :
 - Bindings documentés : `omarchy-shell shell toggle jankeesvw.text-transform`, `… paste`, `… transform`, `… replace`.
 - Panel keyboard-first ; close pendant run OK ; flèches bar restent lit pendant le travail ; stop tue l’agent.
 
-**Gap vs [RE]Cast (ce que JB veut en plus) :**
+**Gap vs [RE]Forge (ce que JB veut en plus) :**
 
 - Pas d’**overlay** type Raycast/Tinycast devant le texte avec **diff word-level**.
 - Panel = input/output boxes ; pas de « cast » immédiat sur sélection avec preview des changements.
@@ -185,16 +185,16 @@ Explicitement **hors scope** tant que JB n’élargit pas le brief :
 
 **Gap / écarts :**
 
-- Lié à **Gemini API key** (BYOK) — hors modèle Omarchy-agent de [RE]Cast.
+- Lié à **Gemini API key** (BYOK) — hors modèle Omarchy-agent de [RE]Forge.
 - Remplacement **direct** sans overlay/diff (corrige et colle).
 - Modes plutôt figés (Fix / Enhance / Formal…) même s’il y a custom prompt — pas le framing « presets only ».
 
-#### Positionnement [RE]Cast
+#### Positionnement [RE]Forge
 
 ```
 text-transform ── agent Omarchy + presets ────────────┐
 hypr-ai-grammar ── sélection Wayland + in-place ──────┤
-Raycast / Tinycast PR ── overlay + diff + actions ────┼──► [RE]Cast
+Raycast / Tinycast PR ── overlay + diff + actions ────┼──► [RE]Forge
 meeting-recorder ── polish UI Omarchy + bar state ────┘
 ```
 
@@ -247,24 +247,24 @@ meeting-recorder ── polish UI Omarchy + bar state ────┘
 -- Summon overlay : capture sélection + last preset (ou picker si aucun)
 o.bind(
   "SUPER + SHIFT + R",
-  "[RE]Cast",
-  "omarchy-shell shell summon nomdelasociete.recast '{}'",  -- payload exact à vérifier
+  "[RE]Forge",
+  "omarchy-shell shell summon nomdelasociete.reforge '{}'",  -- payload exact à vérifier
   { non_consuming = true }
 )
 
 -- Picker de presets
 o.bind(
   "SUPER + SHIFT + P",
-  "[RE]Cast presets",
-  "omarchy-shell shell summon nomdelasociete.recast '{\"mode\":\"picker\"}'",
+  "[RE]Forge presets",
+  "omarchy-shell shell summon nomdelasociete.reforge '{\"mode\":\"picker\"}'",
   { non_consuming = true }
 )
 
 -- Prompt libre
 o.bind(
   "SUPER + SHIFT + E",
-  "[RE]Cast prompt",
-  "omarchy-shell shell summon nomdelasociete.recast '{\"mode\":\"prompt\"}'",
+  "[RE]Forge prompt",
+  "omarchy-shell shell summon nomdelasociete.reforge '{\"mode\":\"prompt\"}'",
   { non_consuming = true }
 )
 ```
@@ -365,7 +365,7 @@ o.bind(
 ┌─────────────────────────────────────────────────────────┐
 │  Omarchy shell (Quickshell)                             │
 │  ┌─────────────────┐   ┌──────────────────────────────┐ │
-│  │ bar-widget?     │   │ overlay / panel  [RE]Cast UI │ │
+│  │ bar-widget?     │   │ overlay / panel  [RE]Forge UI │ │
 │  │ (état running)  │   │  - DiffEngine (QML/JS/Rust?) │ │
 │  └────────┬────────┘   │  - Actions / key catcher     │ │
 │           │            └───────────────┬──────────────┘ │
@@ -426,7 +426,7 @@ Limites connues (text-transform README) : terminals ne traitent souvent pas Ctrl
 
 ### 7.7 Config
 
-- Presets : `~/.config/recast/presets.json` (mode 600) — hors repo plugin (comme text-transform `transformations.json`).
+- Presets : `~/.config/reforge/presets.json` (mode 600) — hors repo plugin (comme text-transform `transformations.json`).
 - Pas de secrets dans le plugin (pas de clé API).
 
 ---
@@ -454,8 +454,8 @@ recast/
 ```json
 {
   "schemaVersion": 1,
-  "id": "nomdelasociete.recast",
-  "name": "[RE]Cast",
+  "id": "nomdelasociete.reforge",
+  "name": "[RE]Forge",
   "version": "0.1.0",
   "author": "Jean-Baptiste Ronssin / nomdelasociete",
   "license": "MIT",
@@ -472,7 +472,7 @@ Si bar widget ajouté : `"kinds": ["overlay", "bar-widget"]` + bloc `barWidget` 
 ```bash
 omarchy plugin add https://github.com/nomdelasociete/recast.git --enable
 # si bar-widget :
-omarchy bar move nomdelasociete.recast --section right
+omarchy bar move nomdelasociete.reforge --section right
 
 # keybindings : documentés dans README → éditer ~/.config/hypr/bindings.lua
 ```
@@ -490,7 +490,7 @@ Validation : `omarchy plugin validate .` + `qmllint` comme dans [Develop a Plugi
 
 ## 9. Critères d’acceptance (MVP)
 
-1. **Install** : `omarchy plugin add` + enable sans erreur ; `omarchy plugin list` montre `nomdelasociete.recast` enabled.
+1. **Install** : `omarchy plugin add` + enable sans erreur ; `omarchy plugin list` montre `nomdelasociete.reforge` enabled.
 2. **Capture** : avec du texte sélectionné dans au moins 3 apps graphiques courantes (ex. browser, Slack/Discord, éditeur GUI), le hotkey ouvre l’overlay avec ce texte comme source.
 3. **Transform** : un preset « Fix spelling » produit un résultat non vide via le default agent ; overlay affiche le texte.
 4. **Diff** : pour une typo volontaire (`teh` → `the`), le mode Diff montre suppression + addition word-level.
@@ -508,7 +508,7 @@ Validation : `omarchy plugin validate .` + `qmllint` comme dans [Develop a Plugi
 
 ## 10. Open questions pour JB
 
-1. **Plugin id final** : `nomdelasociete.recast` vs `jbr.recast` vs autre namespace ?
+1. **Plugin id** : `nomdelasociete.reforge`. Display name `[RE]Forge`.
 2. **Kind shell** : overlay fullscreen vs panel ancré vs combo bar-widget+overlay ?
 3. **Hotkeys** : Super+Shift+R / P / E OK, ou alignement strict sur une seule touche type Raycast Quick Fix ?
 4. **Handoff agent** : que doit-il coller exactement dans l’agent (prompt template) ? Mode unattended `omarchy agent prompt` ou session interactive ?

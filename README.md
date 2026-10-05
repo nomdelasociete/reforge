@@ -1,6 +1,6 @@
-# [RE]Cast
+# [RE]Forge
 
-Omarchy / Hyprland / Wayland plugin: **RE**cord a selection, transform it with any prompt, **Cast** the result back.
+Omarchy / Hyprland / Wayland plugin: **RE**cord a selection, **Forge** it with any prompt, and paste the result back.
 
 ## What it does
 
@@ -52,11 +52,11 @@ omarchy plugin add https://github.com/nomdelasociete/recast.git --enable
 While the git remote has no release yet, a local checkout works the same way:
 
 ```bash
-ln -sfn ~/Github/NomDeLaSociete/recast ~/.config/omarchy/plugins/nomdelasociete.recast
+ln -sfn ~/Github/NomDeLaSociete/recast ~/.config/omarchy/plugins/nomdelasociete.reforge
 # Validate the checkout. A plugin directory that is itself a symlink is rejected.
 omarchy plugin validate ~/Github/NomDeLaSociete/recast
 omarchy-shell shell rescanPlugins
-omarchy plugin enable nomdelasociete.recast
+omarchy plugin enable nomdelasociete.reforge
 ```
 
 `keepLoaded` overlays pick up QML changes on a shell restart (`omarchy restart shell`).
@@ -66,12 +66,12 @@ One binding, in `~/.config/hypr/bindings.lua`:
 ```lua
 o.bind(
   "SUPER + SHIFT + R",
-  "[RE]Cast",
-  os.getenv("HOME") .. "/.config/omarchy/plugins/nomdelasociete.recast/bin/recast summon"
+  "[RE]Forge",
+  os.getenv("HOME") .. "/.config/omarchy/plugins/nomdelasociete.reforge/bin/reforge summon"
 )
 ```
 
-Super+Shift+E and Super+Shift+P are already Email and Photos on Omarchy, so picker and freeform prompt live inside the overlay. The binding runs `bin/recast summon`, which captures the selection before the overlay takes focus.
+Super+Shift+E and Super+Shift+P are already Email and Photos on Omarchy, so picker and freeform prompt live inside the overlay. The binding runs `bin/reforge summon`, which captures the selection before the overlay takes focus.
 
 | Key | Action |
 |-----|--------|
@@ -84,17 +84,17 @@ Super+Shift+E and Super+Shift+P are already Email and Photos on Omarchy, so pick
 | Tab | Presets, prompt, result |
 | Esc | Cancel. Nothing is pasted |
 
-**Super+Shift+R** and **Trigger → [RE]Cast** open the trigger page. It lists every command, the app you were in, and the selection. Enter runs the highlighted command. A command's own shortcut runs that command directly. **Esc** goes back one step: out of a shortcut, out of the editor, off the free prompt, off a result, off Usage, and then it closes. A filter clears before the page closes.
+**Super+Shift+R** and **Trigger → [RE]Forge** open the trigger page. It lists every command, the app you were in, and the selection. Enter runs the highlighted command. A command's own shortcut runs that command directly. **Esc** goes back one step: out of a shortcut, out of the editor, off the free prompt, off a result, off Usage, and then it closes. A filter clears before the page closes.
 
 On the trigger page: **Ctrl+E** edits the highlighted command, **Ctrl+N** adds one, **Ctrl+K** sets its shortcut. Click the shortcut on a row to set it too. **Ctrl+S** saves an edit. **Ctrl+X** deletes it.
 
 A prompt can contain `{app}` (the app that was in front) and `{selection}` (the selected text). If `{selection}` is not in the prompt, the selection is still sent with it.
 
-Other prompts can have their own chord. Those chords are written to `~/.config/hypr/recast.lua`, which `bindings.lua` loads. Each prompt has on/off, whether the result opens on the diff, which agent runs it (empty means the Omarchy default), and whether it is the default. **Ctrl+D** still toggles the diff for the result you are looking at.
+Other prompts can have their own chord. Those chords are written to `~/.config/hypr/reforge.lua`, which `bindings.lua` loads. Each prompt has on/off, whether the result opens on the diff, which agent runs it (empty means the Omarchy default), and whether it is the default. **Ctrl+D** still toggles the diff for the result you are looking at.
 
 The shipped default prompt translates French into English and anything else into French, with the diff off, because a full translation lights up every word. Spelling and the other edits keep the diff on. Turn any of that off per prompt.
 
-Presets live in `~/.config/recast/presets.json` (directory `700`, file `600`). The overlay is the editor. The file is created on first use.
+Presets live in `~/.config/reforge/presets.json` (directory `700`, file `600`). The overlay is the editor. The file is created on first use. Move `~/.config/recast` to `~/.config/reforge` if presets were saved under the old name.
 
 Terminals are best effort: copy and paste use Ctrl+Insert and Shift+Insert there, and many terminals still will not treat that as copy/paste of a selection. GUI apps are the ones Enter is meant for. After a cast, the result stays on the clipboard. If the window has gone, the overlay says so.
 

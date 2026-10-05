@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "id": "nomdelasociete.recast",
-  "name": "[RE]Cast",
+  "id": "nomdelasociete.reforge",
+  "name": "[RE]Forge",
   "version": "0.1.0",
   "author": "Nom de la Société",
   "license": "MIT",
-  "description": "Record a selection, transform it with any prompt, cast it back with a diff overlay.",
+  "description": "Record a selection, forge it with any prompt, and paste it back with a diff overlay.",
   "kinds": ["overlay"],
   "keepLoaded": true,
   "entryPoints": {
