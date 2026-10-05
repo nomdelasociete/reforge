@@ -1,7 +1,7 @@
 # [RE]Forge — Cahier des charges produit / engineering
 
 > **Statut :** brief verrouillé (JB) + recherche concurrentielle — *pas encore d’implémentation*.  
-> **Repo :** https://github.com/nomdelasociete/recast  
+> **Repo :** https://github.com/nomdelasociete/reforge  
 > **Date :** 2026-09-26 (CEST)  
 > **Langue :** FR (lead) ; termes techniques Omarchy / UX en EN quand c’est l’idiome du projet.
 
@@ -326,7 +326,7 @@ o.bind(
 | M5 | Action handoff « Continue in default agent » | Ouvre l’agent avec contexte sélection + résultat + prompt |
 | M6 | Presets = JSON name+prompt (+ hotkey optionnel later) | Ship : Fix spelling, Translate FR↔EN, Shorter, Professional tone, Explain simply |
 | M7 | Prompt libre dans l’overlay | « Make this a polite decline » |
-| M8 | Install plugin Quattro (`manifest.json` + entry overlay/panel) | `omarchy plugin add https://github.com/nomdelasociete/recast.git --enable` |
+| M8 | Install plugin Quattro (`manifest.json` + entry overlay/panel) | `omarchy plugin add https://github.com/nomdelasociete/reforge.git --enable` |
 | M9 | Bindings.lua documentés dans le README | Super+Shift+R |
 | M10 | Gestion erreurs agent / pas de sélection / timeout | Message dans overlay + Esc |
 
@@ -470,7 +470,7 @@ Si bar widget ajouté : `"kinds": ["overlay", "bar-widget"]` + bloc `barWidget` 
 ### 8.3 Install utilisateur
 
 ```bash
-omarchy plugin add https://github.com/nomdelasociete/recast.git --enable
+omarchy plugin add https://github.com/nomdelasociete/reforge.git --enable
 # si bar-widget :
 omarchy bar move nomdelasociete.reforge --section right
 
@@ -541,7 +541,7 @@ Validation : `omarchy plugin validate .` + `qmllint` comme dans [Develop a Plugi
 | Meeting recorder | https://github.com/jankeesvw/omarchy-meeting-recorder |
 | Text transform | https://github.com/jankeesvw/omarchy-text-transform |
 | hypr-ai-grammar | https://github.com/ahasdemir/hypr-ai-grammar |
-| Ce repo | https://github.com/nomdelasociete/recast |
+| Ce repo | https://github.com/nomdelasociete/reforge |
 
 ---
 

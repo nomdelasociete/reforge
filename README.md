@@ -46,7 +46,7 @@ Gap this targets: a Raycast-like overlay with diff preview and an action palette
 Omarchy Quattro 4.x, a default agent (`omarchy default agent`), `jq`, `wl-clipboard`, and `hyprctl`. This plugin does not store an API key. The transform runs the default agent with tools off, in an empty directory.
 
 ```bash
-omarchy plugin add https://github.com/nomdelasociete/recast.git --enable
+omarchy plugin add https://github.com/nomdelasociete/reforge.git --enable
 ```
 
 While the git remote has no release yet, a local checkout works the same way:
